@@ -41,8 +41,9 @@ jobs:
 
     - name: Download modules
       run: go mod download
+      
     - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v6
+      uses: golangci/golangci-lint-action@v9
       with:
         version: v1.56.2
   
@@ -65,7 +66,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build and Push action
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v9
       with:
         context: .
         file: ./Dockerfile
