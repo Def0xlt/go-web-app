@@ -39,13 +39,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Download modules
-      run: go mod download
-      
     - name: Run golangci-lint
-      uses: golangci/golangci-lint-action@v9
+      uses: golangci/golangci-lint-action@v6
       with:
         version: v1.56.2
+      wokring-directory: ./go-web-app
   
   push:
     runs-on: ubuntu-latest
@@ -66,7 +64,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Build and Push action
-      uses: docker/build-push-action@v9
+      uses: docker/build-push-action@v6
       with:
         context: .
         file: ./Dockerfile
