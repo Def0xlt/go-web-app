@@ -1,52 +1,24 @@
-<Docktype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <title>About</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>About - End-to-End GitOps Demo</title>
         <style>
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-            header {
-                background-color: #333;
-                color: #fff;
-                padding: 10px 0;
-                text-align: center;
-            }
-
-            nav ul {
-                list-style-type: none;
-                padding: 0;
-            }
-
-            nav ul li {
-                display: inline;
-                margin-right: 10px;
-            }
-
-            nav ul li a {
-                color: #fff;
-                text-decoration: none;
-            }
-
-            main {
-                padding: 20px;
-            }
-
-            section {
-                margin-bottom: 20px;
-            }
-
-            footer {
-                background-color: #333;
-                color: #fff;
-                text-align: center;
-                padding: 10px 0;
-                position: fixed;
-                bottom: 0;
-                width: 100%;
-            }
+            body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #222; }
+            header { background-color: #333; color: #fff; padding: 12px 0; text-align: center; }
+            nav ul { list-style: none; padding: 0; margin: 0; }
+            nav ul li { display: inline; margin-right: 12px; }
+            nav ul li a { color: #fff; text-decoration: none; }
+            main { padding: 28px; max-width: 980px; margin: 0 auto; }
+            .card { background: #fff; border-radius: 8px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+            h1 { margin-top: 0; }
+            .muted { color: #666; }
+            .pipeline-table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+            .pipeline-table th, .pipeline-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #eee; }
+            .pipeline-table th { background: #f7f7f7; width: 18%; }
+            .export { display:inline-block; margin-top:12px; padding:8px 12px; border-radius:6px; background:#f3f3f3; color:#111; text-decoration:none; }
+            footer { background-color: #333; color: #fff; text-align: center; padding: 10px 0; position: fixed; bottom: 0; width: 100%; }
         </style>
     </head>
     <body>
@@ -55,32 +27,57 @@
                 <ul>
                     <li><a href="home">Home</a></li>
                     <li><a href="about">About</a></li>
-                    <li><a href="contact">Contact</a></li>
-                    <li><a href="courses">Courses</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
-            <section>
-                <h1>About the Author</h1>
-                <p>Hi Everyone, My name is Abhishek and welcome to my channel :)</p>
+            <div class="card">
+                <h1>TL;DR: End-to-End GitOps Demo</h1>
+                <p class="muted">This project is an automated, production-style pipeline demonstrating modern DevOps practices for a simple Go web application.</p>
 
-                    <p>    I am an opensource enthusiast and a great believer in sharing knowledge. </p>
-                        <p>  I have my footprints in popular opensource projects like Argo CD, Argo CD Operator, Argo Rollouts Manager, GitOps Operator, F5 Ingress Controller, Nginx Ingress Controller by Nginx and others. </p>
-                    
-                            <p> Apart from working with Red Hat as a GitOps product lead, I also hold below positions in OpenSource communities</p>
-                                <p>  - Maintainer of Argo CD Operator</p>
-                                    <p> - Creator of Argo Rollouts Manager</p>
-                                        <p> - Maintainer of RedHat Developer (GitOps operator)</p>
-                                            <p> - Member of Argo Project</p>
-                                                <p> - Member of Argo SIG Security</p>
-                    
-                                                    <p> If you want to learn complete devops for free with practical projects, checkout the playlist</p>
-                                                        <p><a href="https://www.youtube.com/playlist?list=PLdpzxOOAlwvIKMhk8WhzN1pYoJ1YU8Csa"> Playlists</a></p>
-                    
-                                                            <p> Please subscribe to the channel to keep learning and growing together. Thanks :)</p>
-            </section>
+                <p>The core function is to implement <strong>Continuous Delivery (CD)</strong> via GitOps, ensuring every code change is automatically built, containerized, and deployed to a cloud cluster.</p>
+
+                <h3>The Pipeline in Brief</h3>
+                <table class="pipeline-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th>Technology</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Code</td>
+                            <td>Go</td>
+                            <td>The foundational web application.</td>
+                        </tr>
+                        <tr>
+                            <td>Container</td>
+                            <td>Docker</td>
+                            <td>Packages the app into a small, secure image (multi-stage build).</td>
+                        </tr>
+                        <tr>
+                            <td>CI</td>
+                            <td>GitHub Actions</td>
+                            <td>Runs tests, builds the Docker image, and updates Helm configuration in Git.</td>
+                        </tr>
+                        <tr>
+                            <td>Orchestration</td>
+                            <td>Kubernetes (EKS)</td>
+                            <td>The target deployment environment.</td>
+                        </tr>
+                        <tr>
+                            <td>CD (GitOps)</td>
+                            <td>Argo CD</td>
+                            <td>Monitors the Git repo and automatically syncs the new version to Kubernetes.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="margin-top:18px;">The entire workflow is triggered by a simple code commit, resulting in a <strong>zero-touch deployment</strong> to the cluster.</p>
+            </div>
         </main>
 
         <footer>
